@@ -6,18 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- css custom -->
     <link rel="stylesheet" href="assets/style/style.css" />
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+    />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Boolzap</title>
   </head>
+
   <body>
     <main>
-      <div class="container-chat">
+      <!-- App -->
+      <div class="container-chat" id="app">
+        <!-- Menu Left -->
         <aside class="menu-left">
-          <nav class="nav-top-menu">nome utente</nav>
-          <div class="notification-alert">notifiche</div>
-          <div class="contacts-menu">contatti ( &plus; input di ricerca)</div>
+          <nav class="nav-top-menu">
+            <div class="user-info">
+              <img src="assets/img/avatar_io.jpg" alt="" />
+              <span>Nome Utente</span>
+            </div>
+            <div class="tools-top-menu">
+              <i class="fas fa-circle-notch"></i>
+              <i class="fas fa-comment-alt"></i>
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+          </nav>
+          <div class="notification-alert">
+            <div class="container-bell">
+              <i class="fas fa-bell-slash"></i>
+            </div>
+            <div class="text-notification">
+              <p>Ricevi notifiche di nuovi messaggi</p>
+              <p>Attiva notifiche desktop</p>
+            </div>
+          </div>
+          <div class="contacts-menu">
+            <div class="search-start-chat">
+              <input type="text" placeholder="Cerca o inizia una nuova chat" />
+            </div>
+            <div class="all-contacts">
+              <ul>
+                <!-- <li>
+                  <img src="assets/img/avatar_1.jpg" alt="" />
+                  <span>Michele</span>
+                </li> TEMPLATE -->
+
+                <li v-for="contact in contacts">
+                  <img
+                    :src="imageLink('avatar', contact.avatar, '.jpg')"
+                    alt=""
+                  />
+                  <span>{{contact.name}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </aside>
+
+        <!-- Active Chat -->
         <div class="chat-content">
-          <nav class="nav-top-chat">info utente chat attiva</nav>
+          <nav class="nav-top-chat">
+            <div class="chat-info">
+              <div class="avatar-chat">imm</div>
+              <div class="name-chat">nome e ultimo accesso</div>
+            </div>
+          </nav>
           <div class="display-chat">display messaggi chat attiva</div>
           <div class="inputs-chat">
             input vari(emotico, testo, messaggi vocali)
@@ -25,5 +88,7 @@
         </div>
       </div>
     </main>
+
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

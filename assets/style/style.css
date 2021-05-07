@@ -9,6 +9,7 @@
 body {
   width: 100vw;
   height: 100vh;
+  font-family: "Lato", sans-serif;
   background-image: linear-gradient(
     to bottom,
     #249688 0px,
@@ -17,6 +18,11 @@ body {
     #d7dbd5 100%
   );
 }
+
+ul {
+  list-style-type: none;
+}
+
 /* /global */
 
 /* main */
@@ -35,7 +41,7 @@ main {
 .container-chat {
   display: flex;
   width: 80%;
-  height: 95%;
+  height: 90%;
   background-color: salmon;
 }
 
@@ -54,21 +60,125 @@ main {
 /* menu left */
 
 .container-chat .menu-left .nav-top-menu {
+  display: flex;
+  padding: 10px 5px;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  height: 55px;
-  background-color: lightcoral;
+  height: 70px;
+  background-color: #eaeaea;
+}
+
+.container-chat .menu-left .nav-top-menu .user-info {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.container-chat .menu-left .nav-top-menu .user-info img {
+  height: 50px;
+  margin-right: 7px;
+  border-radius: 100%;
+}
+
+.container-chat .menu-left .nav-top-menu .user-info span {
+  font-weight: 700;
+}
+
+.container-chat .menu-left .nav-top-menu .tools-top-menu {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.container-chat .menu-left .nav-top-menu .tools-top-menu i {
+  margin-right: 15px;
+  margin-left: 15px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.container-chat .menu-left .nav-top-menu .tools-top-menu i:hover {
+  opacity: 0.8;
 }
 
 .container-chat .menu-left .notification-alert {
   width: 100%;
-  height: 65px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
   background-color: lightgreen;
+}
+
+.container-chat .menu-left .notification-alert .container-bell {
+  margin-right: 7px;
+}
+
+.container-chat .menu-left .notification-alert .container-bell i {
+  padding: 10px;
+  color: #8edafc;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.container-chat
+  .menu-left
+  .notification-alert
+  .text-notification
+  p:first-child {
+  font-weight: 700;
+}
+
+.container-chat
+  .menu-left
+  .notification-alert
+  .text-notification
+  p:nth-child(2) {
+  opacity: 0.5;
+  text-decoration: underline;
 }
 
 .container-chat .menu-left .contacts-menu {
   width: 100%;
-  height: calc(100% - 120px);
+  height: calc(100% - 150px);
   background-color: lightseagreen;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.container-chat .menu-left .contacts-menu .search-start-chat {
+  width: 100%;
+}
+
+.container-chat .menu-left .contacts-menu .search-start-chat input {
+  width: 100%;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+}
+
+.container-chat .menu-left .contacts-menu .search-start-chat input:focus {
+  outline: none;
+}
+
+.container-chat .menu-left .contacts-menu .all-contacts {
+  height: calc(100% - 30px);
+  margin-top: 5px;
+  /* background-color: grey; */
+}
+
+.container-chat .menu-left .contacts-menu .all-contacts ul li {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.container-chat .menu-left .contacts-menu .all-contacts ul li img {
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 /* /menu left */
@@ -77,14 +187,14 @@ main {
 
 .container-chat .chat-content .nav-top-chat {
   width: 100%;
-  height: 55px;
-  background-color: lightpink;
+  height: 70px;
+  background-color: #eaeaea;
 }
 
 .container-chat .chat-content .display-chat {
   width: 100%;
-  height: calc(100% - 125px);
-  background-color: grey;
+  height: calc(100% - 140px);
+  background-image: url(../img/mine.jpg);
 }
 
 .container-chat .chat-content .inputs-chat {
