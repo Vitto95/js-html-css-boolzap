@@ -1,0 +1,98 @@
+/* global */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    #249688 0px,
+    #249688 15%,
+    #d7dbd5 15%,
+    #d7dbd5 100%
+  );
+}
+/* /global */
+
+/* main */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+/* /main */
+
+/* chat app */
+
+.container-chat {
+  display: flex;
+  width: 80%;
+  height: 95%;
+  background-color: salmon;
+}
+
+.container-chat .menu-left {
+  width: 35%;
+  height: 100%;
+  background-color: seagreen;
+}
+
+.container-chat .chat-content {
+  width: 65%;
+  height: 100%;
+  background-color: skyblue;
+}
+
+/* menu left */
+
+.container-chat .menu-left .nav-top-menu {
+  width: 100%;
+  height: 55px;
+  background-color: lightcoral;
+}
+
+.container-chat .menu-left .notification-alert {
+  width: 100%;
+  height: 65px;
+  background-color: lightgreen;
+}
+
+.container-chat .menu-left .contacts-menu {
+  width: 100%;
+  height: calc(100% - 120px);
+  background-color: lightseagreen;
+}
+
+/* /menu left */
+
+/* chat content */
+
+.container-chat .chat-content .nav-top-chat {
+  width: 100%;
+  height: 55px;
+  background-color: lightpink;
+}
+
+.container-chat .chat-content .display-chat {
+  width: 100%;
+  height: calc(100% - 125px);
+  background-color: grey;
+}
+
+.container-chat .chat-content .inputs-chat {
+  width: 100%;
+  height: 70px;
+  background-color: lightcyan;
+}
+
+/* /chat content */
+
+/* /chat app */
