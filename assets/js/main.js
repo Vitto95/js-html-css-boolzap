@@ -110,7 +110,13 @@ const app = new Vue({
         text: this.inputMsg,
         status: "sent",
       };
+      let newAnswer = {
+        date: "10/01/2020 15:30:55",
+        text: "ok",
+        status: "received",
+      };
       this.contacts[this.activeContact].messages.push(newMsg);
+      this.contacts[this.activeContact].messages.push(newAnswer);
       this.inputMsg = "";
     },
   },
