@@ -5,7 +5,7 @@ const app = new Vue({
       {
         name: "Michele",
         avatar: "_1",
-        visible: false,
+        visible: true,
         messages: [
           {
             date: "10/01/2020 15:30:55",
@@ -87,6 +87,7 @@ const app = new Vue({
       },
     ],
     imagePath: "assets/img/",
+    activeContact: 0,
   },
   methods: {
     imageLink(imgName, ...args) {
@@ -98,6 +99,9 @@ const app = new Vue({
         }
       }
       return link;
+    },
+    showMsg(index) {
+      this.activeContact = index;
     },
   },
 });

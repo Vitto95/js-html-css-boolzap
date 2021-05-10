@@ -236,6 +236,7 @@ main {
 /* classe per messaggi inviati da me */
 
 .sent-msg {
+  align-self: flex-start;
   background-color: white;
 }
 
