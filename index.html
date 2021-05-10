@@ -61,7 +61,10 @@
                   <span>Michele</span>
                 </li> TEMPLATE -->
 
-                <li v-for="contact in contacts">
+                <li
+                  v-for="contact in contacts"
+                  @click="contact.visible = !contact.visible"
+                >
                   <img
                     :src="imageLink('avatar', contact.avatar, '.jpg')"
                     alt=""
@@ -87,7 +90,7 @@
             </div>
           </nav>
           <div class="display-chat">
-            <div class="container-messages sent-msg">Ciao come va?</div>
+            <!-- <div class="container-messages sent-msg">Ciao come va?</div>
             <div class="container-messages received-msg">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Laudantium atque nisi iusto possimus. A laboriosam, laudantium
@@ -97,6 +100,17 @@
             </div>
             <div class="container-messages sent-msg">
               Non troppo bene, immagino..
+            </div> -->
+
+            <div v-for="(contact,index) in contacts" v-show="contact.visible">
+              <!-- {{contact.messages[0]["text"]}} -->
+              <div
+                v-for="(msg,index) in contact.messages"
+                class="container-messages"
+                :class="msg.status === 'sent' ? 'sent-msg' : 'received-msg' "
+              >
+                {{msg.text}}
+              </div>
             </div>
           </div>
           <div class="inputs-chat">
