@@ -121,11 +121,20 @@ const app = new Vue({
       this.inputMsg = "";
     },
     searchContact() {
-      this.contacts.forEach((contact) => {
-        if (this.searchContactName.length === 0) {
+      /*      if (this.searchContactName.length === 0) {
           contact.visible = true;
-        }
-        if (
+        } else {
+          for (index in this.searchContactName) {
+            if (
+              !contact.name
+                .toLowerCase()
+                .includes(this.searchContactName.toLowerCase().charAt(index))
+            ) {
+              contact.visible = false;
+            }
+          }
+        } */
+      /*  SOLUZIONE OBSOLETA if (
           !contact.name
             .toLowerCase()
             .includes(
@@ -135,8 +144,28 @@ const app = new Vue({
             )
         ) {
           contact.visible = false;
+        } SOLUZIONE OBSOLETA */
+
+      const filteredList = this.contacts.filter((contact) => {
+        contact.visible = true; //per il delete!!!!
+        if (this.searchContactName.length === 0) {
+          contact.visible = true;
+        } else {
+          for (index in this.searchContactName) {
+            if (
+              !contact.name
+                .toLowerCase()
+                .includes(this.searchContactName.toLowerCase().charAt(index))
+            ) {
+              contact.visible = false;
+            }
+          }
         }
+
+        return contact.visible === true;
       });
+
+      return filteredList;
     },
   },
 });
