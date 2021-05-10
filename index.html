@@ -61,7 +61,10 @@
                   <span>Michele</span>
                 </li> TEMPLATE -->
 
-                <li v-for="(contact,index) in contacts" @click="showMsg(index)">
+                <li
+                  v-for="(contact,index) in contacts"
+                  @click="showMessages(index)"
+                >
                   <img
                     :src="imageLink('avatar', contact.avatar, '.jpg')"
                     alt=""
@@ -87,18 +90,7 @@
             </div>
           </nav>
           <div class="display-chat">
-            <!-- <div class="container-messages sent-msg">Ciao come va?</div>
-            <div class="container-messages received-msg">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Laudantium atque nisi iusto possimus. A laboriosam, laudantium
-              repudiandae odit mollitia maiores eveniet tempora harum vero culpa
-              explicabo? Aperiam distinctio dicta numquam delectus atque
-              architecto? Vitae, dicta nam harum praesentium minima dolorem.
-            </div>
-            <div class="container-messages sent-msg">
-              Non troppo bene, immagino..
-            </div> -->
-
+            <!-- output chat -->
             <div
               v-for="(messagesValue,messagesKey) in contacts[activeContact].messages"
               class="container-messages"
@@ -113,7 +105,12 @@
               <i class="far fa-smile"></i>
             </div>
             <div class="text-messages">
-              <input type="text" placeholder="Scrivi un messaggio" />
+              <input
+                type="text"
+                placeholder="Scrivi un messaggio"
+                v-model="inputMsg"
+                @keyup.enter="sendMsg()"
+              />
             </div>
             <div class="audios">
               <i class="fas fa-microphone"></i>

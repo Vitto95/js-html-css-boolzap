@@ -88,6 +88,7 @@ const app = new Vue({
     ],
     imagePath: "assets/img/",
     activeContact: 0,
+    inputMsg: "",
   },
   methods: {
     imageLink(imgName, ...args) {
@@ -100,8 +101,17 @@ const app = new Vue({
       }
       return link;
     },
-    showMsg(index) {
+    showMessages(index) {
       this.activeContact = index;
+    },
+    sendMsg() {
+      let newMsg = {
+        date: "10/01/2020 15:30:55",
+        text: this.inputMsg,
+        status: "sent",
+      };
+      this.contacts[this.activeContact].messages.push(newMsg);
+      this.inputMsg = "";
     },
   },
 });
