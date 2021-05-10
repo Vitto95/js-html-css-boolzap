@@ -52,7 +52,13 @@
           </div>
           <div class="contacts-menu">
             <div class="search-start-chat">
-              <input type="text" placeholder="Cerca o inizia una nuova chat" />
+              <input
+                type="text"
+                placeholder="Cerca o inizia una nuova chat"
+                v-model="searchContactName"
+                @keyup="searchContact()"
+                @keyup.delete="searchContact()"
+              />
             </div>
             <div class="all-contacts">
               <ul>
@@ -64,6 +70,7 @@
                 <li
                   v-for="(contact,index) in contacts"
                   @click="showMessages(index)"
+                  v-show="contact.visible === true"
                 >
                   <img
                     :src="imageLink('avatar', contact.avatar, '.jpg')"

@@ -27,7 +27,7 @@ const app = new Vue({
       {
         name: "Fabio",
         avatar: "_2",
-        visible: false,
+        visible: true,
         messages: [
           {
             date: "20/03/2020 16:30:00",
@@ -49,7 +49,7 @@ const app = new Vue({
       {
         name: "Samuele",
         avatar: "_3",
-        visible: false,
+        visible: true,
         messages: [
           {
             date: "28/03/2020 10:10:40",
@@ -71,7 +71,7 @@ const app = new Vue({
       {
         name: "Luisa",
         avatar: "_6",
-        visible: false,
+        visible: true,
         messages: [
           {
             date: "10/01/2020 15:30:55",
@@ -86,9 +86,10 @@ const app = new Vue({
         ],
       },
     ],
-    imagePath: "assets/img/",
-    activeContact: 0,
-    inputMsg: "",
+    imagePath: "assets/img/", //percorso per accedere alle immagini
+    activeContact: 0, //indice per il contatto cliccato
+    inputMsg: "", //input di scrittura messaggio
+    searchContactName: "",
   },
   methods: {
     imageLink(imgName, ...args) {
@@ -118,6 +119,24 @@ const app = new Vue({
       this.contacts[this.activeContact].messages.push(newMsg);
       this.contacts[this.activeContact].messages.push(newAnswer);
       this.inputMsg = "";
+    },
+    searchContact() {
+      this.contacts.forEach((contact) => {
+        if (this.searchContactName.length === 0) {
+          contact.visible = true;
+        }
+        if (
+          !contact.name
+            .toLowerCase()
+            .includes(
+              this.searchContactName
+                .toLowerCase()
+                .charAt(this.searchContactName.length - 1)
+            )
+        ) {
+          contact.visible = false;
+        }
+      });
     },
   },
 });
