@@ -138,7 +138,7 @@ const app = new Vue({
       this.inputMsg = "";
     },
     searchContact() {
-      const filteredList = this.contacts.filter((contact) => {
+      this.contacts.forEach((contact) => {
         contact.visible = true; //per il delete!!!!
         if (this.searchContactName.length === 0) {
           contact.visible = true;
@@ -147,17 +147,16 @@ const app = new Vue({
             if (
               !contact.name
                 .toLowerCase()
-                .includes(this.searchContactName.toLowerCase().charAt(index))
+                .includes(
+                  this.searchContactName.toLowerCase().charAt(index).trim()
+                )
             ) {
               contact.visible = false;
             }
           }
         }
-
         return contact.visible === true;
       });
-
-      return filteredList;
     },
     showDropdownMsg(msgIndex, indexChat) {
       if (this.activeMsg !== msgIndex) {
