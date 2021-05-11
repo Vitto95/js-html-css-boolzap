@@ -185,7 +185,7 @@ const app = new Vue({
     },
     showDropdownMsg(msgIndex) {
       this.activeMsg = msgIndex;
-      this.isDropdownActive = !this.isDropdownActive;
+      return (this.isDropdownActive = !this.isDropdownActive);
     },
   },
 });
