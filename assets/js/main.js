@@ -169,10 +169,8 @@ const app = new Vue({
       console.log("Dopo: " + this.isDropdownActive);
     },
     deleteMsg() {
-      return this.contacts[this.activeContact].messages.splice(
-        this.activeMsg,
-        1
-      );
+      this.contacts[this.activeContact].messages.splice(this.activeMsg, 1);
+      this.isDropdownActive = false;
     },
   },
 });

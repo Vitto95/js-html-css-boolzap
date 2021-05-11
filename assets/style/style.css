@@ -146,22 +146,31 @@ main {
 .container-chat .menu-left .contacts-menu {
   width: 100%;
   height: calc(100% - 150px);
-  background-color: lightgrey;
-  /* background da cambiare */
+  background-color: #f9f9f9;
   padding-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
 }
 
 .container-chat .menu-left .contacts-menu .search-start-chat {
-  width: 100%;
+  display: flex;
+  width: calc(100% - 10px);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.container-chat .menu-left .contacts-menu .search-start-chat .mag-glass {
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  line-height: 25px;
+  background-color: white;
 }
 
 .container-chat .menu-left .contacts-menu .search-start-chat input {
-  width: 100%;
+  width: calc(100% - 25px);
   height: 25px;
   border: none;
   border-radius: 3px;
+  padding-left: 20px;
 }
 
 .container-chat .menu-left .contacts-menu .search-start-chat input:focus {
@@ -169,17 +178,23 @@ main {
 }
 
 .container-chat .menu-left .contacts-menu .all-contacts {
+  width: calc(100% - 10px);
   height: calc(100% - 30px);
   margin-top: 5px;
-  padding-top: 5px;
   background-color: white;
+  border-right: 1px solid #b8bbbd;
+}
+
+.container-chat .menu-left .contacts-menu .all-contacts ul li:first-child {
+  padding-top: 5px;
 }
 
 .container-chat .menu-left .contacts-menu .all-contacts ul li {
   display: flex;
   align-items: center;
   padding: 5px 15px;
-  border-bottom: 1px solid lightgray;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-weight: 700;
 }
@@ -188,8 +203,12 @@ main {
   border: none;
 }
 
-.container-chat .menu-left .contacts-menu .all-contacts ul li:hover {
-  background-color: lightgray;
+/* .container-chat .menu-left .contacts-menu .all-contacts ul li:hover {
+  background-color: #f4f5f5;
+} */
+
+.active-contact {
+  background-color: #f4f5f5;
 }
 
 .container-chat .menu-left .contacts-menu .all-contacts ul li img {
@@ -280,7 +299,6 @@ main {
   top: 115%;
   z-index: 999;
   right: 0;
-  /* border: 1px solid black; */
   min-width: 100px;
   background-color: white;
   padding: 10px 10px;

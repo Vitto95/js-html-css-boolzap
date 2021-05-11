@@ -52,7 +52,14 @@
           </div>
           <div class="contacts-menu">
             <div class="search-start-chat">
+              <label for="search-input">
+                <div class="mag-glass">
+                  <i class="fas fa-search vg-search"></i>
+                </div>
+              </label>
+
               <input
+                id="search-input"
                 type="text"
                 placeholder="Cerca o inizia una nuova chat"
                 v-model="searchContactName"
@@ -71,6 +78,7 @@
                   v-for="(contact,index) in contacts"
                   @click="showMessages(index)"
                   v-show="contact.visible === true"
+                  :class="activeContact === index ? 'active-contact' : null "
                 >
                   <img
                     :src="imageLink('avatar', contact.avatar, '.jpg')"
