@@ -114,7 +114,7 @@
               <div class="date-msg">{{messagesValue.date}}</div>
               <div
                 class="dropdown-messages"
-                v-if="activeMsg === messagesIndex && isDropdownActive"
+                v-show="activeMsg === messagesIndex && isDropdownActive"
               ></div>
             </div>
             <!-- inputs chat -->

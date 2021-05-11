@@ -120,6 +120,7 @@ const app = new Vue({
     },
     showMessages(index) {
       this.activeContact = index;
+      this.isDropdownActive = false;
     },
     sendMsg() {
       let newMsg = {
@@ -183,7 +184,7 @@ const app = new Vue({
 
       return filteredList;
     },
-    showDropdownMsg(msgIndex) {
+    showDropdownMsg(msgIndex, indexChat) {
       if (this.activeMsg !== msgIndex) {
         this.activeMsg = msgIndex;
         this.isDropdownActive = false;
