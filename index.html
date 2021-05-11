@@ -102,18 +102,19 @@
           <div class="display-chat">
             <!-- output chat -->
             <div
-              v-for="(messagesValue,messagesKey) in contacts[activeContact].messages"
+              v-for="(messagesValue,messagesIndex) in contacts[activeContact].messages"
               class="container-messages"
               :class="messagesValue.status === 'sent' ? 'received-msg' : 'sent-msg' "
             >
-              <span>{{messagesValue.text}}</span>
+              <span>{{messagesValue.text}} {{messagesIndex}} </span>
               <i
                 class="fas fa-angle-down vg-dropdown-msg"
-                @click="showDropdownMsg(messagesValue) = !showDropdownMsg(messagesValue)"
+                @click="showDropdownMsg(messagesIndex)"
               ></i>
+              <div class="date-msg">{{messagesValue.date}}</div>
               <div
                 class="dropdown-messages"
-                v-show="showDropdownMsg(messagesValue)"
+                v-if="activeMsg === messagesIndex && isDropdownActive"
               ></div>
             </div>
             <!-- inputs chat -->
@@ -138,6 +139,15 @@
       </div>
     </main>
 
+    <!-- dayjs -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+    <!-- script per italiano -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
+    <!-- uso globale it -->
+    <script>
+      dayjs.locale("it"); // use locale globally
+    </script>
+    <!-- script -->
     <script src="assets/js/main.js"></script>
   </body>
 </html>

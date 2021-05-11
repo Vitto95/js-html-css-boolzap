@@ -101,6 +101,10 @@ const app = new Vue({
     inputMsg: "",
     //input per ricerca contatto
     searchContactName: "",
+    //indice per messaggio cliccato(dropdown)
+    activeMsg: 0,
+    //flag per dropdown
+    isDropdownActive: false,
   },
   //methods
   methods: {
@@ -119,12 +123,12 @@ const app = new Vue({
     },
     sendMsg() {
       let newMsg = {
-        date: "10/01/2020 15:30:55",
+        date: dayjs().format("'DD/MM/YYYY' HH:mm:ss "),
         text: this.inputMsg,
         status: "sent",
       };
       let newAnswer = {
-        date: "10/01/2020 15:30:55",
+        date: dayjs().format("'DD/MM/YYYY'  HH:mm:ss "),
         text: "ok",
         status: "received",
       };
@@ -179,8 +183,9 @@ const app = new Vue({
 
       return filteredList;
     },
-    showDropdownMsg(msgValue) {
-      return (msgValue.isDropdownActive = false);
+    showDropdownMsg(msgIndex) {
+      this.activeMsg = msgIndex;
+      this.isDropdownActive = !this.isDropdownActive;
     },
   },
 });

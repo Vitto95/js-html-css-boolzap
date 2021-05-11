@@ -241,7 +241,7 @@ main {
   margin-right: 50px;
   margin-top: 10px;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 0 10px;
 }
 
 .container-chat
@@ -261,6 +261,14 @@ main {
   .container-messages:hover
   .vg-dropdown-msg {
   visibility: visible;
+}
+
+.container-chat .chat-content .display-chat .container-messages .date-msg {
+  position: absolute;
+  font-size: 8px;
+  bottom: 3px;
+  right: 10px;
+  opacity: 0.5;
 }
 
 .container-chat
