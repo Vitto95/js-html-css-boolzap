@@ -184,8 +184,13 @@ const app = new Vue({
       return filteredList;
     },
     showDropdownMsg(msgIndex) {
-      this.activeMsg = msgIndex;
-      return (this.isDropdownActive = !this.isDropdownActive);
+      if (this.activeMsg !== msgIndex) {
+        this.activeMsg = msgIndex;
+        this.isDropdownActive = false;
+      }
+      console.log("Prima: " + this.isDropdownActive);
+      this.isDropdownActive = !this.isDropdownActive;
+      console.log("Dopo: " + this.isDropdownActive);
     },
   },
 });
