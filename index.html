@@ -32,8 +32,8 @@
         <aside class="menu-left">
           <nav class="nav-top-menu">
             <div class="user-info">
-              <img src="assets/img/avatar_io.jpg" alt="" />
-              <span>Nome Utente</span>
+              <img :src="imageLink('avatar', user.avatar, '.jpg')" alt="" />
+              <span> {{user.name}} </span>
             </div>
             <div class="tools-top-menu">
               <i class="fas fa-circle-notch"></i>
@@ -88,10 +88,13 @@
           <nav class="nav-top-chat">
             <div class="chat-info">
               <div class="avatar-chat">
-                <img src="assets/img/avatar_1.jpg" alt="" />
+                <img
+                  :src="imageLink('avatar', contacts[activeContact].avatar, '.jpg')"
+                  alt=""
+                />
               </div>
               <div class="name-chat">
-                <p>Michele</p>
+                <p>{{contacts[activeContact].name}}</p>
                 <p>Ultimo accesso oggi alle</p>
               </div>
             </div>
@@ -103,7 +106,15 @@
               class="container-messages"
               :class="messagesValue.status === 'sent' ? 'received-msg' : 'sent-msg' "
             >
-              {{messagesValue.text}}
+              <span>{{messagesValue.text}}</span>
+              <i
+                class="fas fa-angle-down vg-dropdown-msg"
+                @click="showDropdownMsg(messagesValue) = !showDropdownMsg(messagesValue)"
+              ></i>
+              <div
+                class="dropdown-messages"
+                v-show="showDropdownMsg(messagesValue)"
+              ></div>
             </div>
             <!-- inputs chat -->
           </div>

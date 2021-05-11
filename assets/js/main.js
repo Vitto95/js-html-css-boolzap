@@ -1,6 +1,13 @@
 const app = new Vue({
   el: "#app",
+  //data
   data: {
+    //credenziali utente
+    user: {
+      name: "Genoveffa",
+      avatar: "_io",
+    },
+    //lista contatti
     contacts: [
       {
         name: "Michele",
@@ -86,11 +93,16 @@ const app = new Vue({
         ],
       },
     ],
-    imagePath: "assets/img/", //percorso per accedere alle immagini
-    activeContact: 0, //indice per il contatto cliccato
-    inputMsg: "", //input di scrittura messaggio
+    //percorso per accedere alle immagini
+    imagePath: "assets/img/",
+    //indice per il contatto cliccato
+    activeContact: 0,
+    //input di scrittura messaggio
+    inputMsg: "",
+    //input per ricerca contatto
     searchContactName: "",
   },
+  //methods
   methods: {
     imageLink(imgName, ...args) {
       let link = this.imagePath;
@@ -166,6 +178,9 @@ const app = new Vue({
       });
 
       return filteredList;
+    },
+    showDropdownMsg(msgValue) {
+      return (msgValue.isDropdownActive = false);
     },
   },
 });
