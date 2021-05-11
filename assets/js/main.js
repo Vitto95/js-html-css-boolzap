@@ -138,31 +138,6 @@ const app = new Vue({
       this.inputMsg = "";
     },
     searchContact() {
-      /*      if (this.searchContactName.length === 0) {
-          contact.visible = true;
-        } else {
-          for (index in this.searchContactName) {
-            if (
-              !contact.name
-                .toLowerCase()
-                .includes(this.searchContactName.toLowerCase().charAt(index))
-            ) {
-              contact.visible = false;
-            }
-          }
-        } */
-      /*  SOLUZIONE OBSOLETA if (
-          !contact.name
-            .toLowerCase()
-            .includes(
-              this.searchContactName
-                .toLowerCase()
-                .charAt(this.searchContactName.length - 1)
-            )
-        ) {
-          contact.visible = false;
-        } SOLUZIONE OBSOLETA */
-
       const filteredList = this.contacts.filter((contact) => {
         contact.visible = true; //per il delete!!!!
         if (this.searchContactName.length === 0) {
@@ -192,6 +167,12 @@ const app = new Vue({
       console.log("Prima: " + this.isDropdownActive);
       this.isDropdownActive = !this.isDropdownActive;
       console.log("Dopo: " + this.isDropdownActive);
+    },
+    deleteMsg() {
+      return this.contacts[this.activeContact].messages.splice(
+        this.activeMsg,
+        1
+      );
     },
   },
 });

@@ -106,7 +106,7 @@
               class="container-messages"
               :class="messagesValue.status === 'sent' ? 'received-msg' : 'sent-msg' "
             >
-              <span>{{messagesValue.text}} {{messagesIndex}} </span>
+              <span>{{messagesValue.text}}</span>
               <i
                 class="fas fa-angle-down vg-dropdown-msg"
                 @click="showDropdownMsg(messagesIndex)"
@@ -115,7 +115,12 @@
               <div
                 class="dropdown-messages"
                 v-show="activeMsg === messagesIndex && isDropdownActive"
-              ></div>
+              >
+                <ul class="dropdown-messages-list">
+                  <li>Message info</li>
+                  <li @click="deleteMsg()">Delete message</li>
+                </ul>
+              </div>
             </div>
             <!-- inputs chat -->
           </div>

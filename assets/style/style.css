@@ -282,8 +282,28 @@ main {
   right: 0;
   /* border: 1px solid black; */
   min-width: 100px;
-  min-height: 200px;
   background-color: white;
+  padding: 10px 10px;
+}
+
+.container-chat
+  .chat-content
+  .display-chat
+  .container-messages
+  .dropdown-messages
+  .dropdown-messages-list {
+  padding: 5px 10px;
+}
+
+.container-chat
+  .chat-content
+  .display-chat
+  .container-messages
+  .dropdown-messages
+  .dropdown-messages-list
+  li {
+  padding: 2px 0;
+  cursor: pointer;
 }
 
 /* classe per messaggi inviati da me */
