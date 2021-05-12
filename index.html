@@ -25,11 +25,13 @@
   </head>
 
   <body>
+    <!-- main -->
     <main>
       <!-- App -->
       <div class="container-chat" id="app">
         <!-- Menu Left -->
         <aside class="menu-left">
+          <!-- informazioni utente e vari tools -->
           <nav class="nav-top-menu">
             <div class="user-info">
               <img :src="imageLink('avatar', user.avatar, '.jpg')" alt="" />
@@ -41,6 +43,7 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </nav>
+          <!-- per attivare e disattivare le notifiche -->
           <div class="notification-alert">
             <div class="container-bell">
               <i class="fas fa-bell-slash"></i>
@@ -50,6 +53,7 @@
               <p>Attiva notifiche desktop</p>
             </div>
           </div>
+          <!-- input di ricerca e menu contatti-->
           <div class="contacts-menu">
             <div class="search-start-chat">
               <label for="search-input">
@@ -57,7 +61,6 @@
                   <i class="fas fa-search vg-search"></i>
                 </div>
               </label>
-
               <input
                 id="search-input"
                 type="text"
@@ -69,11 +72,6 @@
             </div>
             <div class="all-contacts">
               <ul>
-                <!-- <li>
-                  <img src="assets/img/avatar_1.jpg" alt="" />
-                  <span>Michele</span>
-                </li> TEMPLATE -->
-
                 <li
                   v-for="(contact,index) in contacts"
                   @click="showMessages(index)"
@@ -85,6 +83,7 @@
                     alt=""
                   />
                   <span>{{contact.name}}</span>
+                  <span class=""> </span>
                 </li>
               </ul>
             </div>
@@ -94,52 +93,70 @@
         <!-- Active Chat -->
         <div class="chat-content">
           <nav class="nav-top-chat">
+            <!-- informazioni chat attiva: nome e immagine contatto, ultimo accesso, vari tools -->
             <div class="chat-info">
-              <div class="avatar-chat">
-                <img
-                  :src="imageLink('avatar', contacts[activeContact].avatar, '.jpg')"
-                  alt=""
-                />
+              <div class="chat-info-left">
+                <div class="avatar-chat">
+                  <img
+                    :src="imageLink('avatar', contacts[activeContact].avatar, '.jpg')"
+                    alt=""
+                  />
+                </div>
+                <div class="name-chat">
+                  <p class="name-contact">{{contacts[activeContact].name}}</p>
+                  <p>
+                    Ultimo accesso:
+                    {{contacts[activeContact].messages[contacts[activeContact].messages.length
+                    -1].date}}
+                  </p>
+                </div>
               </div>
-              <div class="name-chat">
-                <p>{{contacts[activeContact].name}}</p>
-                <p>Ultimo accesso oggi alle</p>
+              <div class="chat-info-right">
+                <i class="fas fa-search"></i>
+                <i class="fas fa-paperclip"></i>
+                <i class="fas fa-ellipsis-v"></i>
               </div>
             </div>
           </nav>
           <div class="display-chat">
-            <!-- output chat -->
+            <!-- output chat, messaggi inviati e ricevuti -->
             <div
               v-for="(messagesValue,messagesIndex) in contacts[activeContact].messages"
               class="container-messages"
               :class="messagesValue.status === 'sent' ? 'received-msg' : 'sent-msg' "
             >
+              <!-- output testo dei messaggi tramite un v-for, e puntando il contatto attivo con activeContact -->
               <span>{{messagesValue.text}}</span>
+              <!-- al click si apre un menu contenente un opzione per cancellare il messaggio corrente -->
               <i
                 class="fas fa-angle-down vg-dropdown-msg"
                 @click="showDropdownMsg(messagesIndex)"
-              ></i>
+              >
+              </i>
+              <!-- output data in cui il messaggio è stato inviato -->
               <div class="date-msg">{{messagesValue.date}}</div>
               <div
                 class="dropdown-messages"
                 v-show="activeMsg === messagesIndex && isDropdownActive"
               >
+                <!-- dropdown menu per cancellare il messaggio -->
                 <ul class="dropdown-messages-list">
                   <li @click="deleteMsg()">Delete message</li>
                 </ul>
               </div>
             </div>
-            <!-- inputs chat -->
           </div>
+          <!-- inputs chat: emoticon, input per testo, messaggi vocali -->
           <div class="inputs-chat">
             <div class="emoticons">
               <i class="far fa-smile"></i>
             </div>
             <div class="text-messages">
+              <!-- al rilascio del tasto invio, il messaggio viene mostrato nel display della chat attiva. Dopo due secondi viene inoltre mostrato un messaggio di risposta-->
               <input
                 type="text"
                 placeholder="Scrivi un messaggio"
-                v-model="inputMsg"
+                v-model.trim="inputMsg"
                 @keyup.enter="sendMsg()"
               />
             </div>
@@ -151,6 +168,7 @@
       </div>
     </main>
 
+    <!-- TUTTI GLI SCRIPT -->
     <!-- dayjs -->
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
     <!-- script per italiano -->

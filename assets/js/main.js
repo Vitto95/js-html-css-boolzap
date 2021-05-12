@@ -108,6 +108,7 @@ const app = new Vue({
   },
   //methods
   methods: {
+    //Funzione per generare l'url dell'immagine in modo dinamico
     imageLink(imgName, ...args) {
       let link = this.imagePath;
       link += imgName;
@@ -118,28 +119,34 @@ const app = new Vue({
       }
       return link;
     },
+    //Funzione che permette, al click di uno dei contatti nella lista, di vedere la chat con il contatto attivo
     showMessages(index) {
       this.activeContact = index;
       this.isDropdownActive = false;
     },
+    //Funzione che permette la visualizzazione del messaggio scritto nel campo input nella chat attiva, e di una conseguente risposta dopo 1 secondo
     sendMsg() {
       let newMsg = {
-        date: dayjs().format("'DD/MM/YYYY' HH:mm:ss "),
+        date: dayjs().format("DD/MM/YYYY HH:mm:ss "),
         text: this.inputMsg,
         status: "sent",
       };
       let newAnswer = {
-        date: dayjs().format("'DD/MM/YYYY'  HH:mm:ss "),
+        date: dayjs().format("DD/MM/YYYY  HH:mm:ss "),
         text: "ok",
         status: "received",
       };
+      //inserire controllo if per msg vuoti
       this.contacts[this.activeContact].messages.push(newMsg);
-      this.contacts[this.activeContact].messages.push(newAnswer);
+      setTimeout(() => {
+        this.contacts[this.activeContact].messages.push(newAnswer);
+      }, 1000);
       this.inputMsg = "";
     },
+    //Funzione che permette la ricerca di un contatto nella lista
     searchContact() {
       this.contacts.forEach((contact) => {
-        contact.visible = true; //per il delete!!!!
+        contact.visible = true; //per il delete, è un reset
         if (this.searchContactName.length === 0) {
           contact.visible = true;
         } else {
@@ -158,7 +165,8 @@ const app = new Vue({
         return contact.visible === true;
       });
     },
-    showDropdownMsg(msgIndex, indexChat) {
+    //Funzione che permette di mostrare e nascondere il dropdown menu dei messaggi
+    showDropdownMsg(msgIndex) {
       if (this.activeMsg !== msgIndex) {
         this.activeMsg = msgIndex;
         this.isDropdownActive = false;
@@ -167,6 +175,7 @@ const app = new Vue({
       this.isDropdownActive = !this.isDropdownActive;
       console.log("Dopo: " + this.isDropdownActive);
     },
+    //funzione che permette la cancellazione del messaggio
     deleteMsg() {
       this.contacts[this.activeContact].messages.splice(this.activeMsg, 1);
       this.isDropdownActive = false;
